@@ -7,22 +7,63 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="A portfolio website for Neeraj, a photographer and designer.">
     <meta name="author" content="Neeraj S A">
-    <!-- Custom Theme files -->
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <!--gallery -->
-    <link type="text/css" rel="stylesheet" href="css/cm-overlay.css" />
-    <!-- //gallery -->
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/lightbox.css" rel="stylesheet">
-    <!-- font-awesome icons -->
-    <!-- web-fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Arsenal:400,400i,700,700i" rel="stylesheet">
-    <!-- //web-fonts -->
     
-    <!-- Add responsive CSS -->
+    <!-- Critical CSS inline to reduce render-blocking -->
     <style>
+        /* Critical path CSS */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        .banner {
+            background: url('image/banner-compressed.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            min-height: 500px;
+            position: relative;
+        }
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+        .banner-text h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        .banner-text h2 {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+        .menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px 0;
+        }
+        .menu nav {
+            text-align: center;
+        }
+        .menu nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            font-size: 1.1em;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
         /* Responsive styles */
         @media screen and (max-width: 768px) {
             .banner-text h1 {
@@ -34,10 +75,6 @@
             .w3_tab_img_left {
                 width: 50%;
                 padding: 10px;
-            }
-            .contact-left-w3ls, .agileits-main-right {
-                width: 100%;
-                padding: 15px;
             }
         }
         
@@ -51,51 +88,43 @@
             .w3_tab_img_left {
                 width: 100%;
             }
-            .menu nav {
-                width: 100%;
-                background: rgba(0,0,0,0.8);
-                padding: 10px;
-            }
             .menu nav a {
-                display: block;
-                padding: 10px;
-                text-align: center;
+                margin: 0 8px;
+                font-size: 1em;
             }
-        }
-        
-        /* Improve image responsiveness */
-        .img-responsive {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        /* Fix gallery layout */
-        .demo figure {
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .demo figure img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s ease;
-        }
-        
-        .demo figure:hover img {
-            transform: scale(1.05);
         }
     </style>
+    
+    <!-- Preload key resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" as="style">
+    <link rel="preload" href="js/jquery.min.js" as="script">
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap">
+    
+    <!-- Minified and combined CSS -->
+    <link rel="stylesheet" href="css/combined.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Font Awesome async loading -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" 
+          media="print" onload="this.media='all'">
+    
+    <!-- Fallback for CSS if JavaScript is disabled -->
+    <noscript>
+        <link rel="stylesheet" href="css/combined.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </noscript>
 </head>
 
 <body>
-    <!-- banner -->
+    <!-- banner with optimized background image -->
     <div id="home" class="banner">
         <div class="banner-agileinfo">
             <!-- header -->
             <div class="header">
                 <div class="container">
                     <div class="menu">
-                        <a href="" id="menuToggle"> <span class="navClosed"></span> </a>
+                        <a href="#" id="menuToggle"> <span class="navClosed"></span> </a>
                         <nav>
                             <a href="#home" class="active scroll">Home</a>
                             <a href="#about" class="scroll">About Me</a>
@@ -104,7 +133,7 @@
                             <a href="#contact" class="scroll">Contact</a>
                         </nav>
                     </div>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <!-- //header -->
@@ -119,194 +148,312 @@
         </div>
     </div>
     <!-- //banner -->
-    <!-- about -->
-    <div class="agile-about w3ls-section text-center " id="about">
+    
+    <!-- Lazy load sections -->
+    <div class="agile-about w3ls-section text-center" id="about">
         <div class="container">
             <h3 class="agileits-title">about me</h3>
             <div class="agileits-about-grid">
                 <h4><p>An enthusiastic student Photographer with sincere and intense conviction on every task I undertake. Gives the best both as a leader and a team member. I create visual images for an exceptional experience</p></h4>
             </div>
-            <a href="#contact" class="wthree- about-link scroll">hire me</a>
+            <a href="#contact" class="about-link scroll">hire me</a>
         </div>
     </div>
-    <!-- //about -->
-    <!-- skills -->
+    
+    <!-- skills section -->
     <div class="agile-service w3ls-section bg-light" id="skills">
         <div class="container">
-            <div class="col-md-5 w3_agileits-service-left">
-                <h3 class="agileits-title">skills</h3>
-                <p>Photography, for all intents and purposes, is a form of art. Therefore, it requires a creative mind—and plenty of imagination. A good photographer must be able to look at something ordinary, or even extraordinary, and find a million different ways to interpret what he's seeing and convey those interpretations in beautiful and meaningful photos. Photography is an art of observation. A good photographer must have a keen eye for detail to ensure that all elements within the photo—the lighting, the composition, the subject, and everything in between—work harmoniously to convey the right vision or message.</p>
-            </div>
-            <div class="col-md-7 skills-right">
-                <div class="vertical-skills pull-right xs-center">
-                    <ul class="list-inline">
-                        <li>
-                            <div class="skill" style="height:90%; background:#03a9f4;"><span class="value">90%</span></div><span class="title">Quality</span></li>
-                        <li>
-                            <div class="skill" style="height:80%; background:#b32eca;"><span class="value">80%</span></div><span class="title">Direction</span></li>
-                        <li>
-                            <div class="skill" style="height:75%; background:#009688;"><span class="value">75%</span></div><span class="title">Editing</span></li>
-                        <li>
-                            <div class="skill" style="height:100%; background:crimson;"><span class="value">100%</span></div><span class="title">Service</span></li>
-                    </ul>
+            <div class="row">
+                <div class="col-md-5 w3_agileits-service-left">
+                    <h3 class="agileits-title">skills</h3>
+                    <p>Photography, for all intents and purposes, is a form of art. Therefore, it requires a creative mind—and plenty of imagination. A good photographer must be able to look at something ordinary, or even extraordinary, and find a million different ways to interpret what he's seeing and convey those interpretations in beautiful and meaningful photos.</p>
+                </div>
+                <div class="col-md-7 skills-right">
+                    <div class="vertical-skills">
+                        <ul class="list-inline">
+                            <li>
+                                <div class="skill" style="height:90%; background:#03a9f4;"><span class="value">90%</span></div><span class="title">Quality</span>
+                            </li>
+                            <li>
+                                <div class="skill" style="height:80%; background:#b32eca;"><span class="value">80%</span></div><span class="title">Direction</span>
+                            </li>
+                            <li>
+                                <div class="skill" style="height:75%; background:#009688;"><span class="value">75%</span></div><span class="title">Editing</span>
+                            </li>
+                            <li>
+                                <div class="skill" style="height:100%; background:crimson;"><span class="value">100%</span></div><span class="title">Service</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="clearfix bg-light"></div>
         </div>
     </div>
+    
+    <!-- Gallery with lazy loading and optimized images -->
     <div class="w3ls-section agileits-gallery" id="gallery">
         <div class="container">
             <h3 class="agileits-title">MY work</h3>
-            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                <div id="myTabContent" class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home-main" aria-labelledby="home-tab">
-                        <div class="w3_tab_img">
-                            <div class="col-sm-3 col-xs-6 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/1.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.jpg" alt="One night at Kochi." class="img-responsive">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>One night at Kochi.</h5>
-                                </div>
-                            </div>
-                            <!-- Repeat this pattern for all gallery items with responsive classes -->
-                            <div class="col-sm-3 col-xs-6 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/2.2.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/2.2.jpg" alt="Heavenly view." class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info"> 
-                                    <h5>Heavenly view.</h5>
-                                </div>
-                            </div>
-                            
-                            <!-- Additional gallery items here -->
-                            
-                            <div class="clearfix"> </div>
+            <div class="gallery-container">
+                <!-- Use a smaller number of images initially -->
+                <div class="row gallery-row">
+                    <!-- First row of images with lazy loading -->
+                    <div class="col-sm-3 col-xs-6 gallery-item">
+                        <a class="gallery-link" href="image/1-large.jpg">
+                            <figure>
+                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                                     data-src="image/1-small.jpg" 
+                                     alt="One night at Kochi." 
+                                     class="lazy-image">
+                                <noscript>
+                                    <img src="image/1-small.jpg" alt="One night at Kochi.">
+                                </noscript>
+                            </figure>
+                        </a>
+                        <div class="gallery-caption">
+                            <h5>One night at Kochi.</h5>
                         </div>
                     </div>
+                    
+                    <div class="col-sm-3 col-xs-6 gallery-item">
+                        <a class="gallery-link" href="image/2-large.jpg">
+                            <figure>
+                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                                     data-src="image/2-small.jpg" 
+                                     alt="Heavenly view." 
+                                     class="lazy-image">
+                                <noscript>
+                                    <img src="image/2-small.jpg" alt="Heavenly view.">
+                                </noscript>
+                            </figure>
+                        </a>
+                        <div class="gallery-caption">
+                            <h5>Heavenly view.</h5>
+                        </div>
+                    </div>
+                    
+                    <!-- More gallery items will be loaded dynamically -->
+                </div>
+                
+                <div id="load-more" class="text-center">
+                    <button class="load-more-btn">Load More</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- //gallery -->
     
-    <!-- contact -->
-    <div class="contact-w3-agileits w3ls-section" id="contact">
+    <!-- Contact section -->
+    <div class="contact-section" id="contact">
         <div class="container">
-            <h3 class="agileits-title cont-w3l">Feel free to contact me</h3>
-            <div class="contact-main-w3ls">
-                <div class="col-md-6 col-sm-12 contact-left-w3ls">
-                    <div class="mail contact-grid-agileinfo">
-                        <div class="col-md-4 col-sm-4 col-xs-4 contact-icon-wthree">
+            <h3 class="section-title">Feel free to contact me</h3>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <h4>Mail me</h4>
                         </div>
-                        <div class="col-md-8 col-sm-8 col-xs-8 contact-text-agileinfo">
+                        <div class="contact-details">
                             <a href="mailto:neerajsaoffical@gmail.com">neerajsaoffical@gmail.com</a><br>
-                            <a href="mailto:neerajsa64@gmail.com">neerajsa64@gmail.com</a><br>
+                            <a href="mailto:neerajsa64@gmail.com">neerajsa64@gmail.com</a>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="call contact-grid-agileinfo">
-                        <div class="col-md-4 col-sm-4 col-xs-4 contact-icon-wthree">
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <h4>Phone</h4>
                         </div>
-                        <div class="col-md-8 col-sm-8 col-xs-8 contact-text-agileinfo">
+                        <div class="contact-details">
                             <p>+91 9446247665</p>
                             <p>+91 7021586237</p>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="contact-grid-agileinfo">
-                        <div class="col-md-4 col-sm-4 col-xs-4 contact-icon-wthree">
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <h4>Address</h4>
                         </div>
-                        <div class="col-md-8 col-sm-8 col-xs-8 contact-text-agileinfo">
-                            <p>VARA-366, Swagath Nagar<br> Arappura, Vattiyoorkavu, Thiruvananthapuram.<br> kerala India.
-                            </p>
+                        <div class="contact-details">
+                            <p>VARA-366, Swagath Nagar<br> Arappura, Vattiyoorkavu, Thiruvananthapuram.<br> kerala India.</p>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="visit wthree-social-icons contact-grid-agileinfo">
-                        <div class="col-md-4 col-sm-4 col-xs-4 contact-icon-wthree">
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <h4>Follow me</h4>
                         </div>
-                        <div class="col-md-8 col-sm-8 col-xs-8 contact-text-agileinfo">
-                            <ul class="w3-links">
+                        <div class="contact-details">
+                            <ul class="social-links">
                                 <li><a href="https://www.facebook.com/neeraj.nea"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://instagram.com/thejobless.sa?igshid=av5rbm8yl50i"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="https://www.linkedin.com/in/neeraj-s-a-8201a9178"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="https://wa.me/919446247665"><i class="fa fa-whatsapp"></i></a></li>
                             </ul>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 agileits-main-right">
-                    <form action="#" method="post" class="agile_form">
-                        <label class="header">Name</label>
-                        <div class="icon1 w3ls-name1">
-                            <input placeholder="Your name" name="first name" type="text" required="">
+                
+                <div class="col-md-6 col-sm-12 contact-form">
+                    <form action="#" method="post" id="contact-form">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="name" required class="form-control">
                         </div>
-                        <div class="icon2">
-                            <label class="header">Email</label>
-                            <input placeholder="Your email" name="email" type="email" required="">
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" required class="form-control">
                         </div>
-                        <div class="icon2">
-                            <label class="header">Message</label>
-                            <textarea placeholder="Your message" name="message" required=""></textarea>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea name="message" required class="form-control"></textarea>
                         </div>
-                        <input type="submit" value="SEND MESSAGE" class="submit-w3l">
+                        
+                        <button type="submit" class="submit-btn">SEND MESSAGE</button>
                     </form>
                 </div>
-                <div class="clearfix"></div>
             </div>
         </div>
     </div>
-    <!-- //contact -->
     
-    <!-- footer -->
-    <div class="footer-w3">
-        <p>&copy; 2025 Neeraj S A. All Rights Reserved.</p>
-    </div>
-    <!-- //footer -->
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Neeraj S A. All Rights Reserved.</p>
+        </div>
+    </footer>
     
-    <!-- js -->
-    <script src="https://example.com/js/jquery-2.2.3.min.js"></script>
-    <script src="js/jquery.tools.min.js"></script>
-    <script src="js/jquery.mobile.custom.min.js"></script>
-    <script src="js/jquery.cm-overlay.js"></script>
+    <!-- Load scripts at the end and defer non-critical ones -->
+    <script src="js/jquery.min.js"></script>
+    
+    <!-- Main JS with performance optimizations -->
     <script>
-        $(document).ready(function () {
-            // Gallery overlay
-            $('.cm-overlay').cmOverlay();
-            
-            // Menu toggle
-            $('#menuToggle').click(function (e) {
-                var $parent = $(this).parent('.menu');
-                $parent.toggleClass("open");
-                var navState = $parent.hasClass('open') ? "hide" : "show";
-                $(this).attr("title", navState + " navigation");
-                setTimeout(function () {
-                    $('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
-                }, 200);
-                e.preventDefault();
+    // Wait for document ready
+    document.addEventListener("DOMContentLoaded", function() {
+        // Initialize lazy loading
+        const lazyImages = document.querySelectorAll(".lazy-image");
+        
+        if ("IntersectionObserver" in window) {
+            const imageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const image = entry.target;
+                        image.src = image.dataset.src;
+                        image.classList.remove("lazy-image");
+                        imageObserver.unobserve(image);
+                    }
+                });
             });
             
-            // Smooth scrolling for anchor links
-            $('a.scroll').click(function(event) {
-                event.preventDefault();
-                var target = $(this.hash);
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 1000);
+            lazyImages.forEach(function(image) {
+                imageObserver.observe(image);
+            });
+        } else {
+            // Fallback for browsers without IntersectionObserver
+            lazyImages.forEach(function(image) {
+                image.src = image.dataset.src;
+            });
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a.scroll').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
             });
         });
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const menu = this.closest('.menu');
+                menu.classList.toggle('open');
+            });
+        }
+        
+        // Load more gallery items
+        const loadMoreBtn = document.querySelector('.load-more-btn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                // Here would be code to load additional gallery items
+                // This could fetch from a JSON file or API to avoid hardcoding in HTML
+                loadMoreGalleryItems();
+            });
+        }
+        
+        // Initialize gallery lightbox (deferred)
+        setTimeout(() => {
+            // Load gallery scripts dynamically
+            const galleryScript = document.createElement('script');
+            galleryScript.src = 'js/gallery.min.js';
+            galleryScript.onload = function() {
+                // Initialize gallery once script is loaded
+                initGallery();
+            };
+            document.body.appendChild(galleryScript);
+        }, 1000);
+        
+        // Form submission (with basic validation)
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here would be form submission code
+                // For now, just show a success message
+                alert('Thanks for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    });
+    
+    // Function to load more gallery items (would be populated with actual data)
+    function loadMoreGalleryItems() {
+        // Example implementation that would be populated with real data
+        const galleryRow = document.querySelector('.gallery-row');
+        
+        // This would normally load from a data source
+        const newItems = [
+            {src: 'image/3-small.jpg', fullSrc: 'image/3-large.jpg', alt: 'Raw.', title: 'Raw.'},
+            {src: 'image/4-small.jpg', fullSrc: 'image/4-large.jpg', alt: 'Interstellar.', title: 'Interstellar.'}
+        ];
+        
+        // Create and append new items
+        newItems.forEach(item => {
+            const template = `
+                <div class="col-sm-3 col-xs-6 gallery-item">
+                    <a class="gallery-link" href="${item.fullSrc}">
+                        <figure>
+                            <img src="${item.src}" alt="${item.alt}" class="img-responsive">
+                        </figure>
+                    </a>
+                    <div class="gallery-caption">
+                        <h5>${item.title}</h5>
+                    </div>
+                </div>
+            `;
+            
+            galleryRow.insertAdjacentHTML('beforeend', template);
+        });
+        
+        // If this was the last batch, hide the button
+        // This would normally be determined based on available data
+        document.getElementById('load-more').style.display = 'none';
+    }
+    
+    // Gallery initialization function
+    function initGallery() {
+        // Code to initialize lightbox or gallery functionality
+        console.log('Gallery initialized');
+    }
     </script>
 </body>
 </html>
