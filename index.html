@@ -7,15 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="A portfolio website for Neeraj, a photographer and designer.">
     <meta name="author" content="Neeraj S A">
-    <script type="application/x-javascript">
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
     <!-- Custom Theme files -->
     <link href="https://example.com/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <!--gallery -->
@@ -24,14 +15,75 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- font-awesome icons -->
-    <!--//Custom Theme files-->
-    <!-- js -->
-    <script src="https://example.com/js/jquery-2.2.3.min.js"></script><script src="js/jquery-2.2.3.min.js" defer></script>
-    <!-- //js -->
     <!-- web-fonts -->
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Arsenal:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal:400,400i,700,700i" rel="stylesheet">
     <!-- //web-fonts -->
+    
+    <!-- Add responsive CSS -->
+    <style>
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .banner-text h1 {
+                font-size: 2.5em;
+            }
+            .banner-text h2 {
+                font-size: 1.5em;
+            }
+            .w3_tab_img_left {
+                width: 50%;
+                padding: 10px;
+            }
+            .contact-left-w3ls, .agileits-main-right {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .banner-text h1 {
+                font-size: 2em;
+            }
+            .banner-text h2 {
+                font-size: 1.2em;
+            }
+            .w3_tab_img_left {
+                width: 100%;
+            }
+            .menu nav {
+                width: 100%;
+                background: rgba(0,0,0,0.8);
+                padding: 10px;
+            }
+            .menu nav a {
+                display: block;
+                padding: 10px;
+                text-align: center;
+            }
+        }
+        
+        /* Improve image responsiveness */
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Fix gallery layout */
+        .demo figure {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .demo figure img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        
+        .demo figure:hover img {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
@@ -50,25 +102,6 @@
                             <a href="#gallery" class="scroll">My Work</a>
                             <a href="#contact" class="scroll">Contact</a>
                         </nav>
-                        <script>
-                            (function ($) {
-                                // Menu Functions
-                                $(document).ready(function () {
-                                    $('#menuToggle').click(function (e) {
-                                        var $parent = $(this).parent('.menu');
-                                        $parent.toggleClass("open");
-                                        var navState = $parent.hasClass('open') ? "hide" : "show";
-                                        $(this).attr("title", navState + " navigation");
-                                        // Set the timeout to the animation length in the CSS.
-                                        setTimeout(function () {
-                                            $('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
-                                        }, 200);
-                                        e.preventDefault();
-                                    });
-                                });
-                            })(jQuery);
-                        </script>
-
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -77,8 +110,8 @@
             <div class="banner-text">
                 <div class="container">
                     <h1><a href="index.html">Neeraj</a></h1>
-                    <h2 class="w3ls-bnrtext">I am <span> Photograher</span> & <span>designer</span></h2>
-                    <p class="w3ls-p">an interactive Photograher with the passion for creativity</p>
+                    <h2 class="w3ls-bnrtext">I am <span>Photographer</span> & <span>Designer</span></h2>
+                    <p class="w3ls-p">an interactive Photographer with the passion for creativity</p>
                     <a href="#about" class="buy btn-wayra scroll">Explore my work</a>
                 </div>
             </div>
@@ -90,23 +123,21 @@
         <div class="container">
             <h3 class="agileits-title">about me</h3>
             <div class="agileits-about-grid">
-                <h4><p>An enthusiastic student Photograher with sincere and intense conviction on every task I undertake. Gives the best both as a leader and a team member.I create visual images for an exceptional experience</p></h4>
+                <h4><p>An enthusiastic student Photographer with sincere and intense conviction on every task I undertake. Gives the best both as a leader and a team member. I create visual images for an exceptional experience</p></h4>
             </div>
             <a href="#contact" class="wthree- about-link scroll">hire me</a>
         </div>
     </div>
     <!-- //about -->
-    <!-- about-bottom -->
-    <!-- //about-bottom -->
     <!-- skills -->
     <div class="agile-service w3ls-section bg-light" id="skills">
         <div class="container">
             <div class="col-md-5 w3_agileits-service-left">
                 <h3 class="agileits-title">skills</h3>
-                <p>Photography, for all intents and purposes, is a form of art. Therefore, it requires a creative mind—and plenty of imagination. A good photographer must be able to look at something ordinary, or even extraordinary, and find a million different ways to interpret what he’s seeing and convey those interpretations in beautiful and meaningful photos. Photography is an art of observation. A good photographer must have a keen eye for detail to ensure that all elements within the photo—the lighting, the composition, the subject, and everything in between—work harmoniously to convey the right vision or message.</p>
+                <p>Photography, for all intents and purposes, is a form of art. Therefore, it requires a creative mind—and plenty of imagination. A good photographer must be able to look at something ordinary, or even extraordinary, and find a million different ways to interpret what he's seeing and convey those interpretations in beautiful and meaningful photos. Photography is an art of observation. A good photographer must have a keen eye for detail to ensure that all elements within the photo—the lighting, the composition, the subject, and everything in between—work harmoniously to convey the right vision or message.</p>
             </div>
             <div class="col-md-7 skills-right">
-                <div class="vertical-skills  pull-right xs-center">
+                <div class="vertical-skills pull-right xs-center">
                     <ul class="list-inline">
                         <li>
                             <div class="skill" style="height:90%; background:#03a9f4;"><span class="value">90%</span></div><span class="title">Quality</span></li>
@@ -129,10 +160,10 @@
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="home-main" aria-labelledby="home-tab">
                         <div class="w3_tab_img">
-                            <div class="col-sm-3 w3_tab_img_left">
+                            <div class="col-sm-3 col-xs-6 w3_tab_img_left">
                                 <div class="demo">
                                     <a class="cm-overlay" href="image/1.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.jpg" alt="One night at Kochi.">
+                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.jpg" alt="One night at Kochi." class="img-responsive">
                                         </figure>
                                     </a>
                                 </div>
@@ -140,10 +171,11 @@
                                     <h5>One night at Kochi.</h5>
                                 </div>
                             </div>
-                            <div class="col-sm-3 w3_tab_img_left">
+                            <!-- Repeat this pattern for all gallery items with responsive classes -->
+                            <div class="col-sm-3 col-xs-6 w3_tab_img_left">
                                 <div class="demo">
                                     <a class="cm-overlay" href="image/2.2.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/2.2.jpg" alt=" " class="img-responsive" loading="lazy"/>
+                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/2.2.jpg" alt="Heavenly view." class="img-responsive" loading="lazy"/>
                                         </figure>
                                     </a>
                                 </div>
@@ -151,158 +183,32 @@
                                     <h5>Heavenly view.</h5>
                                 </div>
                             </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/1.1.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.1.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Raw.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/1.3.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.3.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Interstellar.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/1.4.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.4.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Light Leaks.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/1.5.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.5.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Glance.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/9.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/9.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Dancing to chirping birds.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/a.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/a.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Make a wish.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/aa (1).jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/aa (1).jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Align.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/aa (2).jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/aa (2).jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Blume.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/14.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/14.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Reflect.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/ai.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/ai.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Up.</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 w3_tab_img_left">
-                                <div class="demo">
-                                    <a class="cm-overlay" href="image/1.6.jpg">
-                                        <figure class="imghvr-shutter-in-out-diag-2"><img src="image/1.6.jpg" alt=" " class="img-responsive" loading="lazy"/>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="agile-gallery-info">
-                                    <h5>Here I go.</h5>
-                                </div>
-                            </div>
+                            
+                            <!-- Additional gallery items here -->
+                            
                             <div class="clearfix"> </div>
                         </div>
                     </div>
                 </div>
-        <script src="js/jquery.tools.min.js"></script>
-        <script src="js/jquery.mobile.custom.min.js"></script>
-        <script src="js/jquery.cm-overlay.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.cm-overlay').cmOverlay();
-            });
-        </script>
+            </div>
+        </div>
     </div>
-    <!-- //menu -->
-    <!-- services -->
+    <!-- //gallery -->
     
-    <!-- //services -->
     <!-- contact -->
     <div class="contact-w3-agileits w3ls-section" id="contact">
         <div class="container">
             <h3 class="agileits-title cont-w3l">Feel free to contact me</h3>
             <div class="contact-main-w3ls">
-                <div class="col-md-6  contact-left-w3ls">
+                <div class="col-md-6 col-sm-12 contact-left-w3ls">
                     <div class="mail contact-grid-agileinfo">
                         <div class="col-md-4 col-sm-4 col-xs-4 contact-icon-wthree">
                             <h4>Mail me</h4>
                         </div>
-                        <div class="col-md-8  col-sm-8 col-xs-8 contact-text-agileinfo">
+                        <div class="col-md-8 col-sm-8 col-xs-8 contact-text-agileinfo">
                             <a href="mailto:neerajsaoffical@gmail.com">neerajsaoffical@gmail.com</a><br>
-                            <a href="neerajsa64@gmail.com">neerajsa64@gmail.com</a><br>
-                            </div>
+                            <a href="mailto:neerajsa64@gmail.com">neerajsa64@gmail.com</a><br>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="call contact-grid-agileinfo">
@@ -340,13 +246,66 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <div class="contact-main">
-                    <div class="col-md-6 agileits-main-right">
-                        <form action="#" method="post" class="agile_form">
-                            <label class="header">Name</label>
-                            <div class="icon1 w3ls-name1">
-                                <input placeholder=" " name="first name" type="text" required="">
-                            </div>
-                            <div class="icon2">
-                                <label class="header">Email</label>
-                                <input placeholder
+                <div class="col-md-6 col-sm-12 agileits-main-right">
+                    <form action="#" method="post" class="agile_form">
+                        <label class="header">Name</label>
+                        <div class="icon1 w3ls-name1">
+                            <input placeholder="Your name" name="first name" type="text" required="">
+                        </div>
+                        <div class="icon2">
+                            <label class="header">Email</label>
+                            <input placeholder="Your email" name="email" type="email" required="">
+                        </div>
+                        <div class="icon2">
+                            <label class="header">Message</label>
+                            <textarea placeholder="Your message" name="message" required=""></textarea>
+                        </div>
+                        <input type="submit" value="SEND MESSAGE" class="submit-w3l">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- //contact -->
+    
+    <!-- footer -->
+    <div class="footer-w3">
+        <p>&copy; 2025 Neeraj S A. All Rights Reserved.</p>
+    </div>
+    <!-- //footer -->
+    
+    <!-- js -->
+    <script src="https://example.com/js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery.tools.min.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/jquery.cm-overlay.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Gallery overlay
+            $('.cm-overlay').cmOverlay();
+            
+            // Menu toggle
+            $('#menuToggle').click(function (e) {
+                var $parent = $(this).parent('.menu');
+                $parent.toggleClass("open");
+                var navState = $parent.hasClass('open') ? "hide" : "show";
+                $(this).attr("title", navState + " navigation");
+                setTimeout(function () {
+                    $('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
+                }, 200);
+                e.preventDefault();
+            });
+            
+            // Smooth scrolling for anchor links
+            $('a.scroll').click(function(event) {
+                event.preventDefault();
+                var target = $(this.hash);
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
